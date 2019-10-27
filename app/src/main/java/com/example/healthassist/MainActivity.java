@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     CalendarView calendar;
     TextView date_view;
     Date selectedDate;
+    public static final int NEW_JOURNAL = 0;
+    public static final int OK_RESULT = 1;
     private LinearLayout statusMenu;
     private FloatingActionButton addbtn;
 
@@ -60,9 +62,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 //adding new journal
-                startActivity(new Intent(MainActivity.this, Journal.class));
+                Intent new_Journal = new Intent(MainActivity.this, Journal.class);
+                startActivityForResult(new_Journal, NEW_JOURNAL);
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == NEW_JOURNAL) {
+            //if (resultCode == OK_RESULT){
+                Bundle extras = data.getExtras();
+                int[] hold = extras.getIntArray("numbers");
+                Entry new_Journal = new Entry(hold,selectedDate);
+            //}
+        }
     }
 
     @Override

@@ -23,6 +23,15 @@ public class Entry{
     }
     updateSeverity();
   }
+  public Entry(int[] input, Date d){
+    for (int i = 0; i < size; i++){
+      hashmap[i] = input[i];
+    }
+    updateSeverity();
+    hashmap[19] = d.getMonth();
+    hashmap[20] = d.getDay();
+    hashmap[21] = d.getYear();
+  }
 
   public static void editEntry(int pos, int rating){
     hashmap[pos] = rating;

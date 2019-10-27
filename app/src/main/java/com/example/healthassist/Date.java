@@ -28,7 +28,9 @@ public class Date{
     return year;
   }
 
-  public static void setMonth(int m){ month = m; }
+  public static void setMonth(int m){
+    month = m;
+  }
 
   public static void setDay(int d){
     day = d;
